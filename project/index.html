@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElectroHub - Premium Electronics Store</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container container">
+        <a href="#" class="logo" onclick="showPage('home')">
+          <i class="fas fa-bolt"></i>
+          <span class="logo-text">ElectroHub</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#" class="nav-link" onclick="showPage('home')">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="nav-link" onclick="showPage('products')">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+          </a>
+          <a href="#" class="nav-link" onclick="showPage('cart')">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+          <a href="#" class="nav-link" onclick="showPage('contact')">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="auth-buttons">
+            <button class="btn btn-sm btn-outline" onclick="showPage('login')">
+              <i class="fas fa-sign-in-alt"></i>
+              <span>Login</span>
+            </button>
+            <button
+              class="btn btn-sm"
+              onclick="showPage('register')"
+              style="background-color: var(--accent); margin-left: 10px"
+            >
+              <i class="fas fa-user-plus"></i>
+              <span>Register</span>
+            </button>
+          </div>
+
+          <div class="cart-icon" onclick="showPage('cart')">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCountMobile">0</span>
+          </div>
+
+          <div class="user-menu" id="userMenu">
+            <div class="user-avatar" id="userAvatar">G</div>
+            <span class="user-name" id="userName">Guest</span>
+          </div>
+
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Home Page -->
+      <section id="home-page" class="page active">
+        <div class="hero">
+          <div
+            class="hero-content"
+            style="max-width: 1200px; margin: 0 auto; padding: 0 40px"
+          >
+            <div class="hero-text" style="padding-right: 40px">
+              <h1 class="hero-title">Latest Tech at Amazing Prices</h1>
+              <p class="hero-subtitle">
+                Discover the newest smartphones, laptops, gadgets, and home
+                electronics with exclusive deals and fast shipping. Premium
+                quality with 2-year warranty on all products.
+              </p>
+              <div style="display: flex; gap: 15px; flex-wrap: wrap">
+                <a
+                  href="#"
+                  class="btn btn-accent"
+                  onclick="showPage('products')"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                  Shop Now
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="color: white; border-color: white"
+                  onclick="showPage('products')"
+                >
+                  <i class="fas fa-eye"></i>
+                  Browse All
+                </a>
+              </div>
+            </div>
+            <div class="hero-image">
+              <img
+                src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Electronics"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Rest of the code remains exactly the same -->
+        <h2 class="section-title center">Featured Products</h2>
+        <div class="products-grid" id="featuredProducts">
+          <!-- Featured products will be loaded by JavaScript -->
+        </div>
+
+        <div class="categories-section">
+          <h2 class="section-title center">Shop by Category</h2>
+          <div
+            class="categories-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              gap: 25px;
+              margin-bottom: 60px;
+            "
+          >
+            <div
+              class="category-card"
+              style="
+                background-color: white;
+                border-radius: var(--border-radius);
+                padding: 30px;
+                text-align: center;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                transition: var(--transition);
+              "
+              onclick="showPage('products'); filterProducts('smartphone')"
+            >
+              <div
+                style="
+                  font-size: 3rem;
+                  color: var(--primary);
+                  margin-bottom: 20px;
+                "
+              >
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3 style="margin-bottom: 10px; font-size: 1.3rem">
+                Smartphones
+              </h3>
+              <p style="color: var(--gray)">Latest models from top brands</p>
+              <div
+                style="
+                  margin-top: 15px;
+                  color: var(--primary);
+                  font-weight: 500;
+                "
+              >
+                <span>View Collection</span>
+                <i class="fas fa-arrow-right" style="margin-left: 8px"></i>
+              </div>
+            </div>
+
+            <!-- Other category cards remain the same -->
+            <div
+              class="category-card"
+              style="
+                background-color: white;
+                border-radius: var(--border-radius);
+                padding: 30px;
+                text-align: center;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                transition: var(--transition);
+              "
+              onclick="showPage('products'); filterProducts('laptop')"
+            >
+              <div
+                style="
+                  font-size: 3rem;
+                  color: var(--primary);
+                  margin-bottom: 20px;
+                "
+              >
+                <i class="fas fa-laptop"></i>
+              </div>
+              <h3 style="margin-bottom: 10px; font-size: 1.3rem">Laptops</h3>
+              <p style="color: var(--gray)">
+                Powerful computing for work & play
+              </p>
+              <div
+                style="
+                  margin-top: 15px;
+                  color: var(--primary);
+                  font-weight: 500;
+                "
+              >
+                <span>View Collection</span>
+                <i class="fas fa-arrow-right" style="margin-left: 8px"></i>
+              </div>
+            </div>
+
+            <div
+              class="category-card"
+              style="
+                background-color: white;
+                border-radius: var(--border-radius);
+                padding: 30px;
+                text-align: center;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                transition: var(--transition);
+              "
+              onclick="showPage('products'); filterProducts('audio')"
+            >
+              <div
+                style="
+                  font-size: 3rem;
+                  color: var(--primary);
+                  margin-bottom: 20px;
+                "
+              >
+                <i class="fas fa-headphones"></i>
+              </div>
+              <h3 style="margin-bottom: 10px; font-size: 1.3rem">Audio</h3>
+              <p style="color: var(--gray)">Headphones, speakers & more</p>
+              <div
+                style="
+                  margin-top: 15px;
+                  color: var(--primary);
+                  font-weight: 500;
+                "
+              >
+                <span>View Collection</span>
+                <i class="fas fa-arrow-right" style="margin-left: 8px"></i>
+              </div>
+            </div>
+
+            <div
+              class="category-card"
+              style="
+                background-color: white;
+                border-radius: var(--border-radius);
+                padding: 30px;
+                text-align: center;
+                box-shadow: var(--shadow);
+                cursor: pointer;
+                transition: var(--transition);
+              "
+              onclick="showPage('products'); filterProducts('gaming')"
+            >
+              <div
+                style="
+                  font-size: 3rem;
+                  color: var(--primary);
+                  margin-bottom: 20px;
+                "
+              >
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <h3 style="margin-bottom: 10px; font-size: 1.3rem">Gaming</h3>
+              <p style="color: var(--gray)">Consoles, accessories & gear</p>
+              <div
+                style="
+                  margin-top: 15px;
+                  color: var(--primary);
+                  font-weight: 500;
+                "
+              >
+                <span>View Collection</span>
+                <i class="fas fa-arrow-right" style="margin-left: 8px"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All other pages remain exactly the same as before -->
+      <!-- Products Page -->
+      <section id="products-page" class="page">
+        <h1 class="section-title">All Products</h1>
+
+        <div
+          style="margin-bottom: 30px; display: flex; gap: 12px; flex-wrap: wrap"
+        >
+          <button
+            class="btn btn-outline active-filter"
+            onclick="filterProducts('all')"
+          >
+            All Products
+          </button>
+          <button
+            class="btn btn-outline"
+            onclick="filterProducts('smartphone')"
+          >
+            Smartphones
+          </button>
+          <button class="btn btn-outline" onclick="filterProducts('laptop')">
+            Laptops
+          </button>
+          <button class="btn btn-outline" onclick="filterProducts('audio')">
+            Audio
+          </button>
+          <button class="btn btn-outline" onclick="filterProducts('gaming')">
+            Gaming
+          </button>
+          <button class="btn btn-outline" onclick="filterProducts('wearable')">
+            Wearables
+          </button>
+          <button class="btn btn-outline" onclick="filterProducts('accessory')">
+            Accessories
+          </button>
+        </div>
+
+        <div class="products-grid" id="allProducts">
+          <!-- All products will be loaded by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Cart Page -->
+      <section id="cart-page" class="page">
+        <h1 class="section-title">Your Shopping Cart</h1>
+
+        <div class="cart-container">
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded by JavaScript -->
+          </div>
+
+          <div class="cart-summary">
+            <h3 class="summary-title">Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="shipping">$5.99</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax</span>
+              <span id="tax">$0.00</span>
+            </div>
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span id="total">$5.99</span>
+            </div>
+            <button
+              class="btn btn-block"
+              style="margin-top: 25px"
+              onclick="proceedToCheckout()"
+            >
+              Proceed to Checkout
+            </button>
+            <button
+              class="btn btn-outline btn-block"
+              style="margin-top: 15px"
+              onclick="showPage('products')"
+            >
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checkout Page -->
+      <section id="checkout-page" class="page">
+        <h1 class="section-title">Checkout</h1>
+
+        <div class="checkout-container">
+          <div>
+            <div class="checkout-section">
+              <h3 class="section-heading">
+                <i class="fas fa-user"></i> Contact Information
+              </h3>
+              <div class="form-group">
+                <label class="form-label" for="checkout-email"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="checkout-email"
+                  placeholder="you@example.com"
+                  value="guest@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="checkout-section">
+              <h3 class="section-heading">
+                <i class="fas fa-truck"></i> Shipping Address
+              </h3>
+              <div class="form-group">
+                <label class="form-label" for="checkout-name">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="checkout-name"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="checkout-address">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="checkout-address"
+                  placeholder="123 Main St"
+                />
+              </div>
+              <div
+                class="form-group"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px"
+              >
+                <div>
+                  <label class="form-label" for="checkout-city">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="checkout-city"
+                    placeholder="New York"
+                  />
+                </div>
+                <div>
+                  <label class="form-label" for="checkout-zip">ZIP Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="checkout-zip"
+                    placeholder="10001"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-section">
+              <h3 class="section-heading">
+                <i class="fas fa-credit-card"></i> Payment Method
+              </h3>
+              <div class="payment-methods">
+                <div
+                  class="payment-method selected"
+                  id="payment-credit"
+                  onclick="selectPaymentMethod('credit')"
+                >
+                  <div class="payment-icon">
+                    <i class="far fa-credit-card"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 600">Credit/Debit Card</div>
+                    <div style="font-size: 0.9rem; color: var(--gray)">
+                      Pay with your card
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="payment-method"
+                  id="payment-paypal"
+                  onclick="selectPaymentMethod('paypal')"
+                >
+                  <div class="payment-icon">
+                    <i class="fab fa-paypal"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 600">PayPal</div>
+                    <div style="font-size: 0.9rem; color: var(--gray)">
+                      Pay with your PayPal account
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="payment-method"
+                  id="payment-applepay"
+                  onclick="selectPaymentMethod('applepay')"
+                >
+                  <div class="payment-icon">
+                    <i class="fab fa-apple"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 600">Apple Pay</div>
+                    <div style="font-size: 0.9rem; color: var(--gray)">
+                      Pay with Apple Pay
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="checkout-section">
+              <h3 class="section-heading">
+                <i class="fas fa-receipt"></i> Order Summary
+              </h3>
+              <div id="checkout-items">
+                <!-- Order items will be loaded by JavaScript -->
+              </div>
+              <div
+                style="
+                  margin-top: 25px;
+                  padding-top: 25px;
+                  border-top: 2px solid var(--gray-light);
+                "
+              >
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span id="checkout-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span>Shipping</span>
+                  <span id="checkout-shipping">$5.99</span>
+                </div>
+                <div class="summary-row">
+                  <span>Tax</span>
+                  <span id="checkout-tax">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                  <span>Total</span>
+                  <span id="checkout-total">$5.99</span>
+                </div>
+              </div>
+              <button
+                class="btn btn-block"
+                style="margin-top: 25px"
+                onclick="placeOrder()"
+              >
+                <i class="fas fa-lock"></i>
+                Place Order
+              </button>
+              <button
+                class="btn btn-outline btn-block"
+                style="margin-top: 15px"
+                onclick="showPage('cart')"
+              >
+                <i class="fas fa-arrow-left"></i>
+                Back to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Page -->
+      <section id="contact-page" class="page">
+        <h1 class="section-title center">Contact Us</h1>
+        <p
+          style="
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Have questions? We're here to help. Send us a message and we'll
+          respond as soon as possible.
+        </p>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 style="margin-bottom: 10px">Our Location</h3>
+                <p style="color: var(--gray)">
+                  123 Tech Street, San Francisco, CA 94107
+                </p>
+                <p
+                  style="color: var(--gray); font-size: 0.9rem; margin-top: 5px"
+                >
+                  Visit our flagship store
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h3 style="margin-bottom: 10px">Phone Number</h3>
+                <p style="color: var(--gray)">+1 (555) 123-4567</p>
+                <p
+                  style="color: var(--gray); font-size: 0.9rem; margin-top: 5px"
+                >
+                  Mon-Fri, 9am-6pm PST
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 style="margin-bottom: 10px">Email Address</h3>
+                <p style="color: var(--gray)">support@electrohub.com</p>
+                <p
+                  style="color: var(--gray); font-size: 0.9rem; margin-top: 5px"
+                >
+                  We respond within 24 hours
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h3 style="margin-bottom: 10px">Business Hours</h3>
+                <p style="color: var(--gray)">Monday - Friday: 9am - 8pm</p>
+                <p style="color: var(--gray)">Saturday - Sunday: 10am - 6pm</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-container">
+            <h2 class="form-title">Send Us a Message</h2>
+            <form id="contactForm">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Your Name *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contact-name"
+                  required
+                />
+                <div class="form-error" id="contact-name-error">
+                  Please enter your name
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-email"
+                  >Email Address *</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="contact-email"
+                  required
+                />
+                <div class="form-error" id="contact-email-error">
+                  Please enter a valid email address
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-subject"
+                  >Subject *</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contact-subject"
+                  required
+                />
+                <div class="form-error" id="contact-subject-error">
+                  Please enter a subject
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-message"
+                  >Message *</label
+                >
+                <textarea
+                  class="form-control"
+                  id="contact-message"
+                  rows="6"
+                  required
+                ></textarea>
+                <div class="form-error" id="contact-message-error">
+                  Please enter your message
+                </div>
+              </div>
+              <button type="submit" class="btn btn-block">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Register Page -->
+      <section id="register-page" class="page">
+        <div class="form-container">
+          <h2 class="form-title">Create an Account</h2>
+<!--////////////////////////////////////////////////////////////////////////-->
+          <form id="registerForm" method="post">
+            <div class="form-group">
+              <label class="form-label" for="register-name">Full Name *</label>
+              <input type="text" class="form-control" id="register-name" required />
+
+              <div class="form-error" id="register-name-error">
+                Please enter your full name
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-email"
+                >Email Address *</label
+              >
+              <input type="email" class="form-control" id="register-email" required />
+              <div class="form-error" id="register-email-error">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-password"
+                >Password *</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="register-password"
+                required
+              />
+              <span class="password-toggle" id="register-password-toggle">
+                <i class="fas fa-eye"></i>
+              </span>
+              <div class="form-error" id="register-password-error">
+                Password must be at least 8 characters
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-confirm"
+                >Confirm Password *</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="register-confirm"
+                required
+              />
+              <span class="password-toggle" id="register-confirm-toggle">
+                <i class="fas fa-eye"></i>
+              </span>
+              <div class="form-error" id="register-confirm-error">
+                Passwords do not match
+              </div>
+            </div>
+            <button type="submit" class="btn btn-block" id="register-submit">
+              <i class="fas fa-user-plus"></i>
+              Create Account
+            </button>
+            <div class="auth-switch">
+              <p>
+                Already have an account?
+                <a href="#" class="form-link" onclick="showPage('login')"
+                  >Log In</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+ <!-- Login Page -->
+<section id="login-page" class="page">
+  <div class="form-container">
+    <h2 class="form-title">Log In to Your Account</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email Address *</label>
+        <input
+          type="email"
+          class="form-control"
+          id="login-email"
+          required
+        />
+        <div class="form-error" id="login-email-error">
+          Please enter a valid email address
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-password">Password *</label>
+        <input
+          type="password"
+          class="form-control"
+          id="login-password"
+          required
+        />
+        <span class="password-toggle" id="login-password-toggle">
+          <i class="fas fa-eye"></i>
+        </span>
+        <div class="form-error" id="login-password-error">
+          Please enter your password
+        </div>
+      </div>
+      <button type="submit" class="btn btn-block" id="login-submit">
+        <i class="fas fa-sign-in-alt"></i>
+        Log In
+      </button>
+      <div class="auth-switch">
+        <p>
+          Don't have an account?
+          <a href="#" class="form-link" onclick="showPage('register')">Sign Up</a>
+        </p>
+      </div>
+    </form>
+  </div>
+
+
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div>
+            <div class="footer-logo">
+              <i class="fas fa-bolt"></i>
+              ElectroHub
+            </div>
+            <p style="color: #cbd5e1; margin-bottom: 25px; line-height: 1.7">
+              Your trusted destination for the latest electronics and gadgets.
+              Quality products with warranty and excellent customer service.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#" onclick="showPage('home')"
+                  ><i class="fas fa-chevron-right"></i> Home</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="showPage('products')"
+                  ><i class="fas fa-chevron-right"></i> Products</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="showPage('cart')"
+                  ><i class="fas fa-chevron-right"></i> Cart</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="showPage('contact')"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"><i class="fas fa-chevron-right"></i> FAQ</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Shipping Policy</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Returns & Exchanges</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-chevron-right"></i> Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-title">Contact Info</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-map-marker-alt"></i> 123 Tech Street, San
+                  Francisco</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-phone"></i> +1 (555) 123-4567</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-envelope"></i> support@electrohub.com</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9am-8pm</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; 2023 ElectroHub. All rights reserved. | Designed with
+            <i class="fas fa-heart" style="color: #ef4444"></i> for electronics
+            lovers
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+      <div class="notification-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div>
+        <div
+          id="notification-title"
+          style="font-weight: 600; margin-bottom: 5px"
+        >
+          Success
+        </div>
+        <div id="notification-text">Operation completed successfully!</div>
+      </div>
+    </div>
+    <script src="javascr (1).js"></script>
+  </body>
+</html>
+s
